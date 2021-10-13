@@ -18,7 +18,7 @@ const client = new Client({
     ],
     presence: {
         activities: [{
-            name: `djs v13 handler`,
+            name: `discord.js v13 handler`,
             type: `COMPETING`
         }],
         status: "dnd"
