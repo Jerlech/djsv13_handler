@@ -1,7 +1,7 @@
 module.exports = {
-    name: "test",
-    description: "Test command",
-    run: async(client, interaction, args) => {
+    name: 'test',
+    type: 'USER',
+    run: async(mgk, interaction) => {
         interaction.deferReply({ ephemeral: false })
         interaction.followUp(`Working!`)
     }

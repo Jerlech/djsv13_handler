@@ -25,12 +25,11 @@ const client = new Client({
     }
 })
 module.exports = client
-const keepAlive = require(`./alive.js`)
-keepAlive()
+const { token } = require(`./config.json`)
 
 client.slashCommands = new Collection()
 client.commands = new Collection()
 
 require(`./handler.js`)(client)
 
-client.login(process.env.token)
+client.login(token)

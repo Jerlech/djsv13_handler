@@ -1,8 +1,9 @@
 const { glob } = require("glob")
 const { promisify } = require("util")
 const globPromise = promisify(glob)
+const { guildId } = require(`./config.json`)
 
-module.exports = async (client) => {
+module.exports = async(client) => {
     const commandFiles = await globPromise(`${process.cwd()}/commands/**/*.js`)
     commandFiles.map((value) => {
         const file = require(value)
@@ -23,19 +24,19 @@ module.exports = async (client) => {
         `${process.cwd()}/slashCommands/*/*.js`
     )
 
-    const arrayOfSlashCommands = [];
+    const slashCommandsArray = [];
     slashCommands.map((value) => {
         const file = require(value)
         if (!file.name) return
         client.slashCommands.set(file.name, file)
 
         if (["MESSAGE", "USER"].includes(file.type)) delete file.description
-        arrayOfSlashCommands.push(file)
+        slashCommandsArray.push(file)
     })
-    
-    client.on("ready", async () => {
+
+    client.on("ready", async() => {
         await client.guilds.cache
-            .get("897521922085113936")
-            .commands.set(arrayOfSlashCommands)
+            .get(guildId)
+            .commands.set(slashCommandsArray)
     })
 }
