@@ -18,7 +18,7 @@ const client = new Client({
       ],  
   presence: {
     activities: [{
-      name: `Loading...`,
+      name: `test`,
       type: `COMPETING`
     }],
     status: "dnd"
