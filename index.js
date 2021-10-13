@@ -1,6 +1,6 @@
 const { Client, Collection } = require("discord.js")
 const client = new Client({
-  intents: [
+    intents: [
         "GUILDS",
         "GUILD_MEMBERS",
         "GUILD_BANS",
@@ -15,14 +15,14 @@ const client = new Client({
         "DIRECT_MESSAGES",
         "DIRECT_MESSAGE_REACTIONS",
         "DIRECT_MESSAGE_TYPING",
-      ],  
-  presence: {
-    activities: [{
-      name: `Loading...`,
-      type: `COMPETING`
-    }],
-    status: "dnd"
-  }
+    ],
+    presence: {
+        activities: [{
+            name: `test`,
+            type: `COMPETING`
+        }],
+        status: "dnd"
+    }
 })
 module.exports = client
 const keepAlive = require(`./alive.js`)
