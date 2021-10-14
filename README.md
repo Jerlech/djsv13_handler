@@ -12,7 +12,7 @@ await client.guilds.cache.get(guildId).commands.set(slashCommandsArray)
 #### with this line: 
 
 ```js
-client.application.commands.set(slashCommandsArray)
+await client.application.commands.set(slashCommandsArray)
 ```
 
 
