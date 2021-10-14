@@ -14,6 +14,11 @@ module.exports = async(client) => {
             const props = { dir, ...file }
             client.commands.set(file.name, props)
         }
+
+        if (file.aliases && Array.isArray(file.aliases)) {
+            file.aliases.forEach(async alias => client.aliases.set(alias, file.name))
+        }
+
     })
 
     const eventFiles = await globPromise(`${process.cwd()}/events/*.js`);

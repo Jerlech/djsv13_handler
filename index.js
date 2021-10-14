@@ -29,6 +29,7 @@ const { token } = require(`./config.json`)
 
 client.slashCommands = new Collection()
 client.commands = new Collection()
+client.aliases = new Collection();
 
 require(`./handler.js`)(client)
 
