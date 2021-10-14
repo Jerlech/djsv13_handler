@@ -1,4 +1,4 @@
-# djsv13_handler
+# discord.js v13 complete handler
 
 ### Full discord.js v13 handler, including events, commands, aliases, slash commands and context menus! 
 
@@ -11,7 +11,7 @@
 ```js
 await client.guilds.cache.get(guildId).commands.set(slashCommandsArray)
 ```
-#### with this line: 
+### with this line: 
 
 ```js
 await client.application.commands.set(slashCommandsArray)
