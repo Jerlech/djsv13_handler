@@ -5,7 +5,7 @@ const { guildId } = require(`./config.json`)
 
 module.exports = async(client) => {
     const commandFiles = await globPromise(`${process.cwd()}/commands/**/*.js`)
-    commandFiles.map((v) => {
+    commandFiles.map(async v => {
         const file = require(v)
         const s = v.split("/");
         const dir = s[s.length - 2]
@@ -17,7 +17,7 @@ module.exports = async(client) => {
     })
 
     const eventFiles = await globPromise(`${process.cwd()}/events/*.js`);
-    eventFiles.map((v) => require(v))
+    eventFiles.map(async v => require(v))
 
 
     const slashCommands = await globPromise(
@@ -25,7 +25,7 @@ module.exports = async(client) => {
     )
 
     const slashCommandsArray = [];
-    slashCommands.map((v) => {
+    slashCommands.map(async v => {
         const file = require(v)
         if (!file.name) return
         client.slashCommands.set(file.name, file)
