@@ -1,10 +1,10 @@
 const { glob } = require("glob")
 const { promisify } = require("util")
-const globPromise = promisify(glob)
+const prom = promisify(glob)
 const { guildId } = require(`./config.json`)
 
 module.exports = async(client) => {
-    const commandFiles = await globPromise(`${process.cwd()}/commands/**/*.js`)
+    const commandFiles = await prom(`${process.cwd()}/commands/**/*.js`)
     commandFiles.map(async v => {
         const file = require(v)
         const s = v.split("/");
@@ -21,11 +21,11 @@ module.exports = async(client) => {
 
     })
 
-    const eventFiles = await globPromise(`${process.cwd()}/events/*.js`);
+    const eventFiles = await prom(`${process.cwd()}/events/*.js`);
     eventFiles.map(async v => require(v))
 
 
-    const slashCommands = await globPromise(
+    const slashCommands = await prom(
         `${process.cwd()}/slashCommands/*/*.js`
     )
 
